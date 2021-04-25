@@ -1,3 +1,4 @@
+
 #include<RMCS2303drive.h>
 #include "MapFloat.h"
 #include <ros.h>
@@ -6,8 +7,8 @@
 
 
 RMCS2303 rmcs;
-byte slave_id1=3;
-byte slave_id2=7;
+byte slave_id1=1;
+byte slave_id2=2;
 int INP_CONTROL_MODE=257;           
 int PP_gain=32;
 int PI_gain=16;
@@ -27,7 +28,7 @@ std_msgs::Float32 l_v;
 std_msgs::Float32 r_v;
 ros::Publisher lvel("lvel", &l_v);
 ros::Publisher rvel("rvel", &r_v);
-double wheel_rad = 0.1250, wheel_sep = 0.300;
+double wheel_rad = 0.0625, wheel_sep = 0.340;
 double w_r=0, w_l=0;
 double speed_ang;
 double speed_lin;
@@ -48,36 +49,83 @@ void messageCb( const geometry_msgs::Twist& msg)
   if(w_r==0)
 {
   rightPWM=0;//or break right motor
-  rmcs.Speed(slave_id1,rightPWM); 
-  rmcs.Brake_Motor(slave_id1,0);
-  rmcs.Brake_Motor(slave_id2,0);
-  rmcs.Brake_Motor(slave_id1,1);
-  rmcs.Brake_Motor(slave_id2,1);
+  rmcs.Disable_Digital_Mode(slave_id1,0);
+  rmcs.Disable_Digital_Mode(slave_id2,0);
+//  rmcs.Disable_Digital_Mode(slave_id2,1);
+//  rmcs.Disable_Digital_Mode(slave_id2,1);
+//  rmcs.Brake_Motor(slave_id1,0);
+//  rmcs.Brake_Motor(slave_id2,0);
+//
 }
   else
   rightPWM = mapFloat(fabs(w_r),0.0,8.0,2000,17000);
   
   if(w_l==0){
   leftPWM=0; // or break left motor
-    rmcs.Speed(slave_id1,leftPWM); 
+  rmcs.Disable_Digital_Mode(slave_id1,0);
+  rmcs.Disable_Digital_Mode(slave_id2,0);
+//  rmcs.Disable_Digital_Mode(slave_id2,1);
+//  rmcs.Disable_Digital_Mode(slave_id2,1);
 
-  rmcs.Brake_Motor(slave_id2,0);
-  rmcs.Brake_Motor(slave_id2,0);
-  rmcs.Brake_Motor(slave_id1,1);
-  rmcs.Brake_Motor(slave_id2,1);
-
+//  rmcs.Brake_Motor(slave_id1,0);
+//  rmcs.Brake_Motor(slave_id2,0);
   }
   
   else
   leftPWM = mapFloat(fabs(w_l),0.0,8.0,2000,17000);
+
+
+if(w_r>0 && w_l>0){
   
-  r_v.data = rightPWM;
-  l_v.data = leftPWM;
+ rmcs.Speed(slave_id1,rightPWM);
+ rmcs.Speed(slave_id2,leftPWM);                 // forward
+ rmcs.Enable_Digital_Mode(slave_id1,0);
+ rmcs.Enable_Digital_Mode(slave_id2,0);
   
-  rmcs.Speed(slave_id1,rightPWM); 
-  rmcs.Enable_Digital_Mode(slave_id1,0);
-  rmcs.Speed(slave_id2,leftPWM); 
-  rmcs.Enable_Digital_Mode(slave_id2,0);
+}
+
+else if(w_r<0 && w_l<0){
+  
+ rmcs.Speed(slave_id1,rightPWM);
+ rmcs.Speed(slave_id2,leftPWM);                 // backwards
+ rmcs.Enable_Digital_Mode(slave_id1,1);
+ rmcs.Enable_Digital_Mode(slave_id2,1);
+  
+}
+else if(w_r>0 && w_l<0){
+  
+ rmcs.Speed(slave_id1,rightPWM);
+ rmcs.Speed(slave_id2,leftPWM);                 //Left
+ rmcs.Enable_Digital_Mode(slave_id1,0);
+ rmcs.Enable_Digital_Mode(slave_id2,1);
+  
+}
+
+else if(w_r<0 && w_l>0){
+  
+ rmcs.Speed(slave_id1,rightPWM);
+ rmcs.Speed(slave_id2,leftPWM);                 //Right
+ rmcs.Enable_Digital_Mode(slave_id1,1);
+ rmcs.Enable_Digital_Mode(slave_id2,0);
+  
+}
+
+else {
+  rmcs.Brake_Motor(slave_id1,0);
+  rmcs.Brake_Motor(slave_id2,0);
+  rmcs.Brake_Motor(slave_id1,1);
+  rmcs.Brake_Motor(slave_id2,1);
+}
+  
+//  r_v.data = rightPWM;
+//  l_v.data = leftPWM;
+
+    r_v.data = w_r;
+  l_v.data = w_l;
+
+
+
+
 }
 ros::Subscriber<geometry_msgs::Twist> sub("cmd_vel", &messageCb );
 
@@ -86,15 +134,14 @@ ros::Subscriber<geometry_msgs::Twist> sub("cmd_vel", &messageCb );
 
 
 void setup() {
-rmcs.Serial_selection(0);
+rmcs.Serial_selection(0); 
 rmcs.Serial0(9600);
 rmcs.begin(&Serial1,9600);
-Serial1.begin(9600);
+
    //rmcs.WRITE_PARAMETER(slave_id1,INP_CONTROL_MODE,PP_gain,PI_gain,VF_gain,LPR,acceleration,speed);    //Uncomment to write parameters to drive. Comment to ignore.
    //rmcs.READ_PARAMETER(slave_id1);
    //rmcs.WRITE_PARAMETER(slave_id2,INP_CONTROL_MODE,PP_gain,PI_gain,VF_gain,LPR,acceleration,speed);    //Uncomment to write parameters to drive. Comment to ignore.
    //rmcs.READ_PARAMETER(slave_id2);
-
  nh.initNode();
  nh.subscribe(sub);
  nh.advertise(rvel);
