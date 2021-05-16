@@ -1,0 +1,9 @@
+<launch>
+
+<rosparam file="$(find navbot_description)/launch/controller.yaml" command="load"/>
+<node args="Rev1_position_controller Rev3_position_controller Rev4_position_controller Rev5_position_controller joint_state_controller " name="controller_spawner" ns="navbot" output="screen" pkg="controller_manager" respawn="false" type="spawner"/>
+<node name="robot_state_publisher" output="screen" pkg="robot_state_publisher" respawn="false" type="robot_state_publisher">
+  <remap from="/joint_states" to="/navbot/joint_states"/>
+</node>
+
+</launch>

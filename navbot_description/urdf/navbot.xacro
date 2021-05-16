@@ -1,0 +1,195 @@
+<?xml version="1.0" ?>
+<robot name="navbot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find navbot_description)/urdf/materials.xacro" />
+<xacro:include filename="$(find navbot_description)/urdf/navbot.trans" />
+<xacro:include filename="$(find navbot_description)/urdf/navbot.gazebo" />
+<xacro:include filename="$(find navbot_description)/urdf/navbot_gazebo_plugins.xacro" />
+<link name="base_link">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.0003147036812539107 8.654508451147519e-05 0.10819103947899564"/>
+    <mass value="12.261671363009004"/>
+    <inertia ixx="0.081478" ixy="-0.0" ixz="9.1e-05" iyy="0.132969" iyz="2.5e-05" izz="0.169987"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <geometry>
+      <mesh filename="package://navbot_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <geometry>
+      <mesh filename="package://navbot_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="back_right_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-4.597357573521421e-07 -0.02052480177758853 3.5268927792847515e-07"/>
+    <mass value="4.878358553104739"/>
+    <inertia ixx="0.006717" ixy="-0.0" ixz="-0.0" iyy="0.010579" iyz="-0.0" izz="0.006717"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.099572 0.149882 -0.060076"/>
+    <geometry>
+      <mesh filename="package://navbot_description/meshes/back_right_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.099572 0.149882 -0.060076"/>
+    <geometry>
+      <mesh filename="package://navbot_description/meshes/back_right_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="front_right_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-4.5917696378516837e-07 -0.02052480177758842 3.532853243698453e-07"/>
+    <mass value="4.878358553104739"/>
+    <inertia ixx="0.006717" ixy="-0.0" ixz="-0.0" iyy="0.010579" iyz="0.0" izz="0.006717"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.100428 0.149882 -0.060076"/>
+    <geometry>
+      <mesh filename="package://navbot_description/meshes/front_right_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.100428 0.149882 -0.060076"/>
+    <geometry>
+      <mesh filename="package://navbot_description/meshes/front_right_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="back_left_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-4.591769638545573e-07 0.02052395350161601 3.5268927771336944e-07"/>
+    <mass value="4.878358553104739"/>
+    <inertia ixx="0.006717" ixy="0.0" ixz="0.0" iyy="0.010579" iyz="0.0" izz="0.006717"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.099572 -0.150118 -0.060076"/>
+    <geometry>
+      <mesh filename="package://navbot_description/meshes/back_left_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.099572 -0.150118 -0.060076"/>
+    <geometry>
+      <mesh filename="package://navbot_description/meshes/back_left_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="front_left_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-4.5917696392394625e-07 0.020523953501616038 3.5328532416167846e-07"/>
+    <mass value="4.878358553104739"/>
+    <inertia ixx="0.006717" ixy="0.0" ixz="0.0" iyy="0.010579" iyz="0.0" izz="0.006717"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.100428 -0.150118 -0.060076"/>
+    <geometry>
+      <mesh filename="package://navbot_description/meshes/front_left_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.100428 -0.150118 -0.060076"/>
+    <geometry>
+      <mesh filename="package://navbot_description/meshes/front_left_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="laser_link_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.059736166901482965 -0.0007615524008376084 -0.1543759334958711"/>
+    <mass value="1.665743279714892"/>
+    <inertia ixx="0.001074" ixy="0.0" ixz="-4e-06" iyy="0.001074" iyz="1.2e-05" izz="0.001371"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.15 -0.0 -0.355"/>
+    <geometry>
+      <mesh filename="package://navbot_description/meshes/laser_link_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.15 -0.0 -0.355"/>
+    <geometry>
+      <mesh filename="package://navbot_description/meshes/laser_link_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="camera_link_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.005062755778537015 8.310596384087141e-06 -0.14999900449372974"/>
+    <mass value="0.18999043750406577"/>
+    <inertia ixx="0.000197" ixy="-0.0" ixz="-0.0" iyy="4e-05" iyz="0.0" izz="0.000157"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.150428 -0.000118 -0.280076"/>
+    <geometry>
+      <mesh filename="package://navbot_description/meshes/camera_link_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.150428 -0.000118 -0.280076"/>
+    <geometry>
+      <mesh filename="package://navbot_description/meshes/camera_link_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="Rev1" type="continuous">
+  <origin rpy="0 0 0" xyz="-0.099572 -0.149882 0.060076"/>
+  <parent link="base_link"/>
+  <child link="back_right_1"/>
+  <axis xyz="0.0 1.0 -0.0"/>
+</joint>
+
+<joint name="Rev3" type="continuous">
+  <origin rpy="0 0 0" xyz="0.100428 -0.149882 0.060076"/>
+  <parent link="base_link"/>
+  <child link="front_right_1"/>
+  <axis xyz="0.0 1.0 -0.0"/>
+</joint>
+
+<joint name="Rev4" type="continuous">
+  <origin rpy="0 0 0" xyz="-0.099572 0.150118 0.060076"/>
+  <parent link="base_link"/>
+  <child link="back_left_1"/>
+  <axis xyz="-0.0 1.0 0.0"/>
+</joint>
+
+<joint name="Rev5" type="continuous">
+  <origin rpy="0 0 0" xyz="0.100428 0.150118 0.060076"/>
+  <parent link="base_link"/>
+  <child link="front_left_1"/>
+  <axis xyz="-0.0 1.0 0.0"/>
+</joint>
+
+<joint name="Rigid6" type="fixed">
+  <origin rpy="0 0 0" xyz="0.15 0.0 0.355"/>
+  <parent link="base_link"/>
+  <child link="laser_link_1"/>
+</joint>
+
+<joint name="Rigid7" type="fixed">
+  <origin rpy="0 0 0" xyz="0.150428 0.000118 0.280076"/>
+  <parent link="base_link"/>
+  <child link="camera_link_1"/>
+</joint>
+
+</robot>
