@@ -1,0 +1,17 @@
+<launch>
+	
+	
+
+	<!-- odometry-ish-->
+	<param name="~base_frame_id" value="base_footprint"/>
+	<param name="~odom_frame_id" value="odom"/>
+	<param name="encoder_min" value="-1073741824"/>
+	<param name="encoder_max" value="1073741824"/>
+	<param name="ticks_meter" value="612377" />
+	<param name="~base_width" value="0.34" />
+
+	<node pkg="differential_drive" type="diff_tf.py" name="diff_drive" output="screen">
+       <!-- <remap from="/odom" to="/wheelodom"/> -->
+        </node>
+	<node pkg="tf2_ros" type="static_transform_publisher" name="base_footprint_to_base_link" args="0 0 0.06 0 0 0  /base_footprint /base_link"/>
+</launch>
