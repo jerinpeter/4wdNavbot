@@ -110,44 +110,44 @@
   </collision>
 </link>
 
-<link name="laser_link_1">
+<link name="laser_link_v1_1">
   <inertial>
-    <origin rpy="0 0 0" xyz="-0.059736166901482965 -0.0007615524008376084 -0.1543759334958711"/>
-    <mass value="1.665743279714892"/>
+    <origin rpy="0 0 0" xyz="0.0002638330985168125 -0.0007615524008374664 0.020624066504128902"/>
+    <mass value="1.6657432797148926"/>
     <inertia ixx="0.001074" ixy="0.0" ixz="-4e-06" iyy="0.001074" iyz="1.2e-05" izz="0.001371"/>
   </inertial>
   <visual>
-    <origin rpy="0 0 0" xyz="-0.15 -0.0 -0.355"/>
+    <origin rpy="0 0 0" xyz="-0.0 -0.0 -0.18"/>
     <geometry>
-      <mesh filename="package://navbot_description/meshes/laser_link_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://navbot_description/meshes/laser_link_v1_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
-    <origin rpy="0 0 0" xyz="-0.15 -0.0 -0.355"/>
+    <origin rpy="0 0 0" xyz="-0.0 -0.0 -0.18"/>
     <geometry>
-      <mesh filename="package://navbot_description/meshes/laser_link_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://navbot_description/meshes/laser_link_v1_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
 
-<link name="camera_link_1">
+<link name="camera_link_v1_1">
   <inertial>
-    <origin rpy="0 0 0" xyz="-0.005062755778537015 8.310596384087141e-06 -0.14999900449372974"/>
-    <mass value="0.18999043750406577"/>
-    <inertia ixx="0.000197" ixy="-0.0" ixz="-0.0" iyy="4e-05" iyz="0.0" izz="0.000157"/>
+    <origin rpy="0 0 0" xyz="-0.010094496944980769 1.27997814036277e-05 -0.14999905153125456"/>
+    <mass value="0.18735731616487916"/>
+    <inertia ixx="0.000194" ixy="-0.0" ixz="-0.0" iyy="4e-05" iyz="0.0" izz="0.000155"/>
   </inertial>
   <visual>
     <origin rpy="0 0 0" xyz="-0.150428 -0.000118 -0.280076"/>
     <geometry>
-      <mesh filename="package://navbot_description/meshes/camera_link_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://navbot_description/meshes/camera_link_v1_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin rpy="0 0 0" xyz="-0.150428 -0.000118 -0.280076"/>
     <geometry>
-      <mesh filename="package://navbot_description/meshes/camera_link_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://navbot_description/meshes/camera_link_v1_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -180,16 +180,16 @@
   <axis xyz="-0.0 1.0 0.0"/>
 </joint>
 
-<joint name="Rigid6" type="fixed">
-  <origin rpy="0 0 0" xyz="0.15 0.0 0.355"/>
+<joint name="Rigid8" type="fixed">
+  <origin rpy="0 0 0" xyz="0.0 0.0 0.19"/>
   <parent link="base_link"/>
-  <child link="laser_link_1"/>
+  <child link="laser_link_v1_1"/>
 </joint>
 
-<joint name="Rigid7" type="fixed">
+<joint name="Rigid9" type="fixed">
   <origin rpy="0 0 0" xyz="0.150428 0.000118 0.280076"/>
   <parent link="base_link"/>
-  <child link="camera_link_1"/>
+  <child link="camera_link_v1_1"/>
 </joint>
 
 </robot>
