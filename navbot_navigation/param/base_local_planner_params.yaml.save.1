@@ -1,12 +1,12 @@
 TrajectoryPlannerROS:
-  max_vel_x: 0.2 #tested 0.0285
-  min_vel_x: 0.05
-  max_vel_theta: 0.6
+  max_vel_x: 0. #tested 0.0285
+  min_vel_x: 0.2
+  max_vel_theta: 1.0
   min_in_place_vel_theta: 0.4
 
-  acc_lim_theta: 1 #was 3.2
-  acc_lim_x: 1
-  acc_lim_y: 1
+  acc_lim_theta: 10.0 #was 3.2
+  acc_lim_x: 2.5
+  acc_lim_y: 2.5
 
 #holonomic_robot: true
 
@@ -60,8 +60,8 @@ DWAPlannerROS:
   min_rot_vel: 1.35
   max_rot_vel:  1.5
 
-  min_vel_x: 0.1
-  max_vel_x: 0.3
+  min_vel_x: 0.2
+  max_vel_x: 0.5
 
   min_trans_vel: 0.00 # makes robot can't rotate in place?
   max_trans_vel: 0.15
@@ -70,7 +70,7 @@ DWAPlannerROS:
   trans_stopped_vel: 0.00 # 0,00 can be difficult when trying to start but allows robot to rotate in place?
 
   acc_lim_theta: 3.0
-  acc_lim_x: 0.2
+  acc_lim_x: 3.0
   acc_lim_y: 0.0
   acc_limit_trans: 3.0
 
