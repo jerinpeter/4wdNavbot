@@ -1,5 +1,16 @@
 # A 4WD ROS Robot with Autonomous Navigation capability
 
+## Designed and Simulated in Fusion360 
+
+[![GAZEBO SIMULATION](data/video.png)](https://www.youtube.com/watch?v=yLzaqpGkmrI)
+
+
+
+
+
+
+
+
 ## Components Used
 
 | Component     | Image           |
