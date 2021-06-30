@@ -2,8 +2,7 @@
 
 ## Designed and Simulated in Fusion360 
 
-[![GAZEBO SIMULATION](http://img.youtube.com/vi/yLzaqpGkmrI/0.jpg))](https://www.youtube.com/watch?v=yLzaqpGkmrI)
-
+[![GAZEBO SIMULATION](http://img.youtube.com/vi/yLzaqpGkmrI/1.jpg)](https://www.youtube.com/watch?v=yLzaqpGkmrI)
 
 
 
