@@ -4,7 +4,8 @@
 |![pic1](data/robot2.jpg) | ![pic2](data/robot1.jpg)|
 | :-----: | :-: |
 |![pic3](data/robot3.jpg) | ![pic4](data/robot4.jpg) |
-|![pic5](data/robot5.jpg)|![pic6](https://user-images.githubusercontent.com/34794384/124068963-11c50080-da59-11eb-9c46-76f76e6fea4d.mp4)|
+|![pic5](data/robot5.jpg)| https://user-images.githubusercontent.com/34794384/124068963-11c50080-da59-11eb-9c46-76f76e6fea4d.mp4 
+
 
 
 The Robot was modelled in Fusion360 and converted to URDF using [fusion2urdf](https://github.com/syuntoku14/fusion2urdf).
