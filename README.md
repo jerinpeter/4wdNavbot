@@ -1,6 +1,13 @@
 # A 4WD ROS Robot with Autonomous Navigation capability
 
-The Robot was initially modelled in Fusion360 and converted to URDF using [fusion2urdf](https://github.com/syuntoku14/fusion2urdf).
+
+|![pic1](data/robot2.jpg) | ![pic2](data/robot1.jpg)|
+| :-----: | :-: |
+|![pic3](data/robot3.jpg) | ![pic4](data/robot4.jpg) |
+|![pic5](data/robot5.jpg)|![pic6](https://user-images.githubusercontent.com/34794384/124068963-11c50080-da59-11eb-9c46-76f76e6fea4d.mp4)|
+
+
+The Robot was modelled in Fusion360 and converted to URDF using [fusion2urdf](https://github.com/syuntoku14/fusion2urdf).
 Gazebo Pluggins for [differential drive](http://gazebosim.org/tutorials?tut=ros_gzplugins#DifferentialDrive),Odometry and [LaserScan](http://gazebosim.org/tutorials?tut=ros_gzplugins#Laser) were added to the urdf and tested in a custom made simulation environment/world in Gazebo.
 
 ## 3D modelling and Simulation 
