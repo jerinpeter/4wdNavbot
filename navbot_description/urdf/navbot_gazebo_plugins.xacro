@@ -11,7 +11,7 @@
     <rightRearJoint>Rev1</rightRearJoint>
     <wheelSeparation>0.4</wheelSeparation>
     <wheelDiameter>0.125</wheelDiameter>
-    <robotBaseFrame>base_link</robotBaseFrame>
+    <robotBaseFrame>base_footprint</robotBaseFrame>
     <torque>20</torque>
     <topicName>cmd_vel</topicName>
     <broadcastTF>true</broadcastTF>

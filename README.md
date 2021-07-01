@@ -4,16 +4,29 @@
 |![pic1](data/robot2.jpg)|![pic2](data/robot1.jpg)|
 | :-----: | :-: |
 |![pic3](data/robot3.jpg) | ![pic4](data/robot4.jpg) |
-|![pic5](data/robot5.jpg)| <video width="320" height="240" controls>
-  <source src="data/robot6.mp4" type="video/mp4">
-</video>
+|![pic5](data/robot5.jpg)| ![pic6](data/robot8.jpg)
 
+## Installation
 
+```
+cd ~/catkin_ws/src
 
+git clone https://github.com/jerinpeter/4wdNavbot.git
+
+cd ..
+
+catkin_make
+
+rosdep install --from-paths src --ignore-src -r -y
+
+```
+If catkin_make shows error, install the missing dependenices using the rosdep command.  
+
+## 3D modelling and Simulation 
 The Robot was modelled in Fusion360 and converted to URDF using [fusion2urdf](https://github.com/syuntoku14/fusion2urdf).
 Gazebo Pluggins for [differential drive](http://gazebosim.org/tutorials?tut=ros_gzplugins#DifferentialDrive),Odometry and [LaserScan](http://gazebosim.org/tutorials?tut=ros_gzplugins#Laser) were added to the urdf and tested in a custom made simulation environment/world in Gazebo.
 
-## 3D modelling and Simulation 
+### Demo
 
 [![GAZEBO SIMULATION](data/video.png)](https://www.youtube.com/watch?v=yLzaqpGkmrI)
 

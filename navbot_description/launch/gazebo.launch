@@ -1,5 +1,6 @@
 <?xml version = "1.0" ?>
 <launch>
+<node pkg="tf" type="static_transform_publisher" name="footprint_to_link" args="0 0 0 0 0 0 base_footprint base_link 100" />
   <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher"/>
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
   <param command="$(find xacro)/xacro $(find navbot_description)/urdf/navbot.xacro" name="robot_description"/>
