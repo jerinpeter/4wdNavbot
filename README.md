@@ -1,13 +1,13 @@
 # A 4WD ROS Robot with autonomous navigation capability
 
-## The Robot Harware Setup
+## The Robot Harware Setup 🔧
 
 |![pic1](data/robot2.jpg)|![pic2](data/robot1.jpg)|
 | :-----: | :-: |
 |![pic3](data/robot3.jpg) | ![pic4](data/robot4.jpg) |
 |![pic5](data/robot5.jpg)| ![pic6](data/robot8.jpg)
 
-## Installation
+## Installation 💻
 
 ```
 cd ~/catkin_ws/src
@@ -27,7 +27,7 @@ If catkin_make shows error, install the missing dependenices using the rosdep co
 The Robot was modelled in Fusion360 and converted to URDF using [fusion2urdf](https://github.com/syuntoku14/fusion2urdf).
 Gazebo Pluggins for [differential drive](http://gazebosim.org/tutorials?tut=ros_gzplugins#DifferentialDrive),Odometry and [LaserScan](http://gazebosim.org/tutorials?tut=ros_gzplugins#Laser) were added to the urdf and tested in a custom made simulation environment/world in Gazebo.
 
-### Demo
+### Demo video 👇
 
 [![GAZEBO SIMULATION](data/video.png)](https://www.youtube.com/watch?v=yLzaqpGkmrI)
 
@@ -68,7 +68,6 @@ rviz
 /cmd_vel
 /right_ticks
 /left_ticks 
-/right_ticks
 ```
 * I have used **RMCS-2303** Motor drivers for controlling the Dc motors with encoders. The motor driver has inbuilt PID control implemented with the help of an STM32 MicroController.
 *  The Motor driver is connected to Arduino via **UART** (Tx,RX).4 such motor drivers where used to control the 4 motors and each motors where addresed using a **unique slave-id** set via jumper pins.
@@ -83,22 +82,62 @@ rviz
 
 ## ROS Setup for Mapping and Navigation 
 
-* The arduino publishes the encoder ticks into the Jetson Nano via ros-serial which are subscribed by the [differential_drive](http://wiki.ros.org/differential_drive) package and publishes **/odom** as well as **Tf** (odom -> base_footprint).
+* The arduino publishes the encoder ticks into the Jetson Nano via ros-serial which are subscribed by the [differential_drive](http://wiki.ros.org/differential_drive) package and publishes **/odom** as well as **Tf** **(odom -> base_footprint)**.
 
-The YdLidar package is responsible for publishing the LaserScan as **/scan** data along with Tf (base_link -> laser)
+The YdLidar package is responsible for publishing the LaserScan as **/scan** data along with **Tf** **(base_link -> laser)**
+
+### **Tf Tree**
+* With the Robot Model
+![Tf_tree_sim](data/Tf_simulation.png)
+
+* Without Robot Model
+![Tf_tree_real](data/Tf_real.jpg)
+
+# Real Robot Setup
+
+* Before setting up and running the robot,Jetson Nano and host machine should be set up following this tutorial -> [ROS Network setup](http://wiki.ros.org/ROS/NetworkSetup)
+
+```
+roscore
+
+rosrun rosserial_python serial_node.py /dev/ttyACM0
+
+roslaunch ydlidar_ros yd_lidar.launch
+
+roslaunch differential_drive tf_controller.launch
+
+roslaunch navbot_navigation move_base.launch
+
+rviz
+
+```
+
+* After running Rviz open the Navbot.rviz configuration from the Rviz folder.
+
+* Open DynamicReconfigure from rqt gui and load final_reconf_params_real.yaml
+
+* Give the goal location in Rviz and we are good to go!
 
 
 ## Components Used
 
 | Component     | Image           |
 | ------------- |:-------------:|
-| [Nvidia Jetson Nano](https://www.tannatechbiz.com/nvidia-jetson-nano-developer-kit-b01.html) |<img src="data/jetson.png" alt="drawing" width="200"/>| 
-| [YD-Lidar X4](https://www.amazon.in/SmartFly-info-LIDAR-053-YDLIDAR-X4/dp/B07DBYHJVQ/ref=sr_1_1?dchild=1&keywords=ydlidar&qid=1625070853&sr=8-1)|<img src="data/lidar.png" alt="drawing" width="200"/>| 
-|[Arduino Mega](https://robu.in/product/arduino-mega-2560-board-with-compatible-usb-cable/)|<img src="data/mega.png" alt="drawing" width="200"/>| 
-| [RMCS 2303 Motor Drivers](https://robokits.co.in/motor-drives-drivers/encoder-dc-servo/rhino-dc-servo-driver-10v-30v-50w-5a-compatible-with-modbus-uart-ascii-for-encoder-dc-servo-motor)|<img src="data/motordriver.png" alt="drawing" width="200"/>
-| [100 RPM High Precision Encoder Motors](https://robokits.co.in/motors/encoder-dc-servo/high-torque-high-precision-motor/high-torque-high-precision-encoder-dc-geared-motor-12v-100rpm)|<img src="data/motors.png" alt="drawing" width="200"/>
-|[10,000Mah, 2C Li-Ion Battery](https://robokits.co.in/batteries-chargers/skycell-li-ion-battery/11.1vli-ion-batteries-9.6-12.6v/li-ion-11.1v-10000mah-2c-with-inbuilt-charger-protection) |<img src="data/battery.png" alt="drawing" width="200"/>
-|[DC-DC Step Down Converter](https://robu.in/product/10a-dc-dc-step-down-adjustable-constant-voltage-module/) |<img src="data/buck.png" alt="drawing" width="200"/>
-|[125mm AGV Wheels](https://robokits.co.in/robot-wheels/rubber-tracked-wheels/robot-wheel-125mm-diameter-60mm-width-for-atv) | <img src="data/wheels.png" alt="drawing" width="200"/>
+| [Nvidia Jetson Nano](https://www.tannatechbiz.com/nvidia-jetson-nano-developer-kit-b01.html) |<img src="data/jetson.png" alt="drawing" width="250"/>| 
+| [YD-Lidar X4](https://www.amazon.in/SmartFly-info-LIDAR-053-YDLIDAR-X4/dp/B07DBYHJVQ/ref=sr_1_1?dchild=1&keywords=ydlidar&qid=1625070853&sr=8-1)|<img src="data/lidar.png" alt="drawing" width="250"/>| 
+|[Arduino Mega](https://robu.in/product/arduino-mega-2560-board-with-compatible-usb-cable/)|<img src="data/mega.png" alt="drawing" width="250"/>| 
+| [RMCS 2303 Motor Drivers](https://robokits.co.in/motor-drives-drivers/encoder-dc-servo/rhino-dc-servo-driver-10v-30v-50w-5a-compatible-with-modbus-uart-ascii-for-encoder-dc-servo-motor)|<img src="data/motordriver.png" alt="drawing" width="250"/>
+| [100 RPM High Precision Encoder Motors](https://robokits.co.in/motors/encoder-dc-servo/high-torque-high-precision-motor/high-torque-high-precision-encoder-dc-geared-motor-12v-100rpm)|<img src="data/motors.png" alt="drawing" width="250"/>
+|[10,000Mah, 2C Li-Ion Battery](https://robokits.co.in/batteries-chargers/skycell-li-ion-battery/11.1vli-ion-batteries-9.6-12.6v/li-ion-11.1v-10000mah-2c-with-inbuilt-charger-protection) |<img src="data/battery.png" alt="drawing" width="250"/>
+|[DC-DC Step Down Converter](https://robu.in/product/10a-dc-dc-step-down-adjustable-constant-voltage-module/) |<img src="data/buck.png" alt="drawing" width="250"/>
+|[125mm AGV Wheels](https://robokits.co.in/robot-wheels/rubber-tracked-wheels/robot-wheel-125mm-diameter-60mm-width-for-atv) | <img src="data/wheels.png" alt="drawing" width="250"/>
 
 ## References
+
+[RMCS 2303 Motor Driver Manual](https://robokits.download/downloads/RMCS-2303%20updated%20datasheet.pdf)
+
+[RMCS 2303 Arduino Library](https://robokits.co.in/downloads/RMCS2303drive_V2.zip)
+
+[Motor Specifications](https://robokits.download/downloads/RMCS-5013.pdf)
+
+[ROS Navigation Tuning Guide](https://kaiyuzheng.me/documents/navguide.pdf)
