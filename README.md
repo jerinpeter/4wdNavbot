@@ -132,6 +132,14 @@ rviz
 |[DC-DC Step Down Converter](https://robu.in/product/10a-dc-dc-step-down-adjustable-constant-voltage-module/) |<img src="data/buck.png" alt="drawing" width="250"/>
 |[125mm AGV Wheels](https://robokits.co.in/robot-wheels/rubber-tracked-wheels/robot-wheel-125mm-diameter-60mm-width-for-atv) | <img src="data/wheels.png" alt="drawing" width="250"/>
 
+## Further Work
+
+* Modularize all the nodes into launch files for ease of use.
+* Addition of the dynamic reconfigure parameters into the navigation param files.
+* Using IMU and EKF for better Localization and pose estimate.
+* Adding Kinect / realsense for 3D mapping,Vision applications etc.
+* Addition of return to base station for charging feature.
+
 ## References
 
 [RMCS 2303 Motor Driver Manual](https://robokits.download/downloads/RMCS-2303%20updated%20datasheet.pdf)
@@ -141,3 +149,13 @@ rviz
 [Motor Specifications](https://robokits.download/downloads/RMCS-5013.pdf)
 
 [ROS Navigation Tuning Guide](https://kaiyuzheng.me/documents/navguide.pdf)
+
+## Contributions
+
+Contributions are most welcome ;-) 
+
+## Project Photos and videos
+
+* The photos and videos that I took during the build, will make a final video soon!
+
+ [**Photos and Videos**](https://photos.app.goo.gl/16n6vmuHw6YWK7ry7)
