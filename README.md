@@ -91,7 +91,8 @@ The YdLidar package is responsible for publishing the LaserScan as **/scan** dat
 ![Tf_tree_sim](data/Tf_simulation.png)
 
 * Without Robot Model
-![Tf_tree_real](data/Tf_real.jpg)
+
+    <img src="data/Tf_real.jpg" alt="drawing" width="250" height = 300/>
 
 # Real Robot Setup
 
