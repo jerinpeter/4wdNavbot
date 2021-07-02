@@ -151,11 +151,11 @@ rviz
 [ROS Navigation Tuning Guide](https://kaiyuzheng.me/documents/navguide.pdf)
 
 
+ ## Contributions
+
+Contributions are most welcome ;-) 
 
 ## [Project Photos and Videos](https://photos.app.goo.gl/16n6vmuHw6YWK7ry7)
 
 * The photos and videos that I took during the build, will make a final video soon!
 
- ## Contributions
-
-Contributions are most welcome ;-) 
