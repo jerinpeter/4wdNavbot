@@ -1,9 +1,9 @@
 <launch>
 
-  
+  <remap from="/camera/odom/sample" to="/odom"/>
  <!-- Run the map server --> 
    <arg name="map_file" default="$(find navbot_description)/maps/mymap.yaml"/>
-    <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)"/>
+    <!--<node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)"/> -->
 
  <!--- Run AMCL --> 
     <include file="$(find navbot_navigation)/launch/amcl.launch" />
@@ -16,6 +16,7 @@
     <rosparam file="$(find navbot_navigation)/param/base_local_planner_params.yaml" command="load" />
    <rosparam file="$(find navbot_navigation)/param/move_base_params.yaml" command="load" />
     <!--<rosparam file="$(find navbot_navigation)/param/dwa_local_planner_params.yaml" command="load" /> -->
+  <remap from="/camera/odom/sample" to="/odom"/>
 
  </node>
 

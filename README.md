@@ -152,11 +152,49 @@ rviz
 [ROS Navigation Tuning Guide](https://kaiyuzheng.me/documents/navguide.pdf)
 
 
- ## Contributions
-
-Contributions are most welcome ;-) 
 
 ## [Project Photos and Videos](https://photos.app.goo.gl/16n6vmuHw6YWK7ry7)
 
 * The photos and videos that I took during the build, will make a final video soon!
 
+# UPDATE 12-11-2021 
+ 
+ ## Support for Odom from T265 + TF correction
+
+* Added Support for using Odom from Intel RealSense T265 Tracking Camera
+* Added the required TF Launch files for the same
+    * To use Odometry from T265 run these extra commands
+
+ ```
+roslaunch navbot_navigation t265_odom.launch 
+
+roslaunch navbot_navigation tf.launch 
+ ```  
+
+ ## UPDATED Base Local Planner -> DWA to TEB
+
+* Updated parameters can be found in the params folder
+
+To install the same use
+```
+sudo apt-get install ros-noetic-teb-local-planner
+```
+
+## Added support for Xbox 360 Kinect for 3D vision -> RTAB mapping, Point Cloud Generation
+
+[Kinect Drivers + ROS Package installation](https://aibegins.net/2020/11/22/give-your-next-robot-3d-vision-kinect-v1-with-ros-noetic/)
+
+* After installtion the following command will open up the depth stream / PointCloud in Rviz
+
+```
+roslaunch freenect_launch freenect.launch depth_registration:=true
+```
+
+## FINAL WORKING VIDEO [Outdoor Navigation + 3D Point Cloud Generation] 👇
+
+
+[![Final Video](data/final.png)](https://youtu.be/Dy9fhVJdwMo)
+
+## Contributions
+
+Contributions are most welcome ;-) 
