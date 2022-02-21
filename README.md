@@ -168,9 +168,8 @@ rviz
     * To use Odometry from T265 run these extra commands
 
  ```
-roslaunch navbot_navigation t265_odom.launch 
-
 roslaunch navbot_navigation tf.launch 
+
  ```  
 
  ## UPDATED Base Local Planner -> DWA to TEB
