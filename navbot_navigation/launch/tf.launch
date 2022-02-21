@@ -1,6 +1,6 @@
 <launch>
-<node pkg="tf2_ros" type="static_transform_publisher" name="odom_to_camera_odom" args="0 0 0 0 0 0  /odom /camera1_odom_frame"/>
-<node pkg="tf2_ros" type="static_transform_publisher" name="camera_link_to_base_footprint" args="0 0 0.06 0 0 0  /camera1_link /base_footprint"/>
+<node pkg="tf2_ros" type="static_transform_publisher" name="odom_to_camera_odom" args="0 0 0 0 0 0  /odom /camera_odom_frame"/>
+<node pkg="tf2_ros" type="static_transform_publisher" name="camera_link_to_base_footprint" args="0 0 0.06 0 0 0  /camera_link /base_footprint"/>
 <node pkg="tf2_ros" type="static_transform_publisher" name="base_footprint_to_base_link" args="0 0 0 0 0 0  /base_footprint /base_link"/>
 
 </launch>
