@@ -118,7 +118,7 @@ void setup()
 {
   rmcs.Serial_selection(0);  // 0 -> for Harware serial tx1 rx1 of arduino mega
   rmcs.Serial0(9600);
-  rmcs.begin(&Serial1, 9600);
+  rmcs.begin(&Serial3, 9600);
 
   nh.initNode();      // initialzing the node handle object
   nh.subscribe(sub);  // subscribing to cmd vel with sub object
